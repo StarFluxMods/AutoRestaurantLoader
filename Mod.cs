@@ -12,7 +12,7 @@ namespace AutoRestaurantLoader
     {
         public const string MOD_GUID = "com.starfluxgames.autorestaurantloader";
         public const string MOD_NAME = "Auto Restaurant Loader";
-        public const string MOD_VERSION = "0.1.0";
+        public const string MOD_VERSION = "0.1.1";
         public const string MOD_AUTHOR = "StarFluxGames";
         public const string MOD_GAMEVERSION = ">=1.1.7";
         
@@ -40,6 +40,7 @@ namespace AutoRestaurantLoader
         {
             manager = new PreferenceManager(MOD_GUID);
             manager.RegisterPreference(new PreferenceInt("selectedSaveSlot", 0));
+            manager.Load();
 
             Events.MainMenuView_SetupMenusEvent += (s, args) =>
             {
