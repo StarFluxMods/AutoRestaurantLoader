@@ -12,16 +12,11 @@ namespace AutoRestaurantLoader
     {
         public const string MOD_GUID = "com.starfluxgames.autorestaurantloader";
         public const string MOD_NAME = "Auto Restaurant Loader";
-        public const string MOD_VERSION = "0.1.1";
+        public const string MOD_VERSION = "0.1.2";
         public const string MOD_AUTHOR = "StarFluxGames";
-        public const string MOD_GAMEVERSION = ">=1.1.7";
+        public const string MOD_GAMEVERSION = ">=1.2.0";
         
         public static PreferenceManager manager;
-#if DEBUG
-        public const bool DEBUG_MODE = true;
-#else
-        public const bool DEBUG_MODE = false;
-#endif
 
         public static AssetBundle Bundle;
 
@@ -44,15 +39,15 @@ namespace AutoRestaurantLoader
 
             Events.MainMenuView_SetupMenusEvent += (s, args) =>
             {
-                args.addMenu.Invoke(args.instance, new object[] { typeof(LevelSelectMenu<MainMenuAction>), new LevelSelectMenu<MainMenuAction>(args.instance.ButtonContainer, args.module_list) });
+                args.addMenu.Invoke(args.instance, new object[] { typeof(LevelSelectMenu<MenuAction>), new LevelSelectMenu<MenuAction>(args.instance.ButtonContainer, args.module_list) });
             };
             Events.PlayerPauseView_SetupMenusEvent += (s, args) =>
             {
-                args.addMenu.Invoke(args.instance, new object[] { typeof(LevelSelectMenu<PauseMenuAction>), new LevelSelectMenu<PauseMenuAction>(args.instance.ButtonContainer, args.module_list) });
+                args.addMenu.Invoke(args.instance, new object[] { typeof(LevelSelectMenu<MenuAction>), new LevelSelectMenu<MenuAction>(args.instance.ButtonContainer, args.module_list) });
             };
             
-            ModsPreferencesMenu<PauseMenuAction>.RegisterMenu("Auto Restaurant Loader", typeof(LevelSelectMenu<PauseMenuAction>), typeof(PauseMenuAction));
-            ModsPreferencesMenu<MainMenuAction>.RegisterMenu("Auto Restaurant Loader", typeof(LevelSelectMenu<MainMenuAction>), typeof(MainMenuAction));
+            ModsPreferencesMenu<MenuAction>.RegisterMenu("Auto Restaurant Loader", typeof(LevelSelectMenu<MenuAction>), typeof(MenuAction));
+            ModsPreferencesMenu<MenuAction>.RegisterMenu("Auto Restaurant Loader", typeof(LevelSelectMenu<MenuAction>), typeof(MenuAction));
         }
         #region Logging
         public static void LogInfo(string _log) { Debug.Log($"[{MOD_NAME}] " + _log); }
